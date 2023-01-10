@@ -134,10 +134,26 @@ return h.make_builtin({
                         if not cspell.words then
                             cspell.words = {}
                         end
+                        if cspell.dictionaryDefinitions then
+                            for _, definition in ipairs(cspell.dictionaryDefinitions) do
+                                local dictionary_path =
+                                    require("null-ls.utils").path.join(params.cwd or vim.loop.cwd(), definition.path)
 
-                        table.insert(cspell.words, word)
+                                local dictionary = vim.fn.readfile(dictionary_path)
+                                local updated_dictionary = vim.fn.add(dictionary, word)
+                                table.sort(updated_dictionary, function(a, b)
+                                    return a < b
+                                end)
 
-                        vim.fn.writefile({ vim.json.encode(cspell) }, cspell_json_file)
+                                vim.fn.writefile(updated_dictionary, dictionary_path)
+                            end
+                        end
+
+                        if not cspell.dictionaryDefinitions then
+                            table.insert(cspell.words, word)
+
+                            vim.fn.writefile({ vim.json.encode(cspell) }, cspell_json_file)
+                        end
 
                         -- replace word in buffer to trigger cspell to update diagnostics
                         vim.api.nvim_buf_set_text(
