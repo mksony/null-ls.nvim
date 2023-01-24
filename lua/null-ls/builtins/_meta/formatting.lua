@@ -154,6 +154,9 @@ return {
   google_java_format = {
     filetypes = { "java" }
   },
+  hclfmt = {
+    filetypes = { "hcl" }
+  },
   isort = {
     filetypes = { "python" }
   },
@@ -356,7 +359,7 @@ return {
     filetypes = { "markdown" }
   },
   terraform_fmt = {
-    filetypes = { "terraform", "tf" }
+    filetypes = { "terraform", "tf", "terraform-vars" }
   },
   textlint = {
     filetypes = {}
