@@ -37,6 +37,9 @@ return {
   brittany = {
     filetypes = { "haskell" }
   },
+  bsfmt = {
+    filetypes = { "brs" }
+  },
   buf = {
     filetypes = { "proto" }
   },
@@ -365,7 +368,7 @@ return {
     filetypes = { "terraform", "tf", "terraform-vars" }
   },
   textlint = {
-    filetypes = {}
+    filetypes = { "txt", "markdown" }
   },
   tidy = {
     filetypes = { "html", "xml" }

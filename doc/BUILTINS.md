@@ -1222,6 +1222,23 @@ local sources = { null_ls.builtins.diagnostics.mypy }
 - Command: `mypy`
 - Args: dynamically resolved (see [source](https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/lua/null-ls/builtins/diagnostics/mypy.lua))
 
+### [npm_groovy_lint](https://github.com/nvuillam/npm-groovy-lint)
+
+Lint, format and auto-fix Groovy, Jenkinsfile, and Gradle files.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.npm_groovy_lint }
+```
+
+#### Defaults
+
+- Filetypes: `{ "groovy", "java", "Jenkinsfile" }`
+- Method: `diagnostics`
+- Command: `npm-groovy-lint`
+- Args: `{ "-o", "json", "-" }`
+
 ### [opacheck](https://www.openpolicyagent.org/docs/latest/cli/#opa-check)
 
 Check Rego source files for parse and compilation errors.
@@ -1951,6 +1968,23 @@ local sources = { null_ls.builtins.diagnostics.teal }
 - Command: `tl`
 - Args: `{ "check", "$FILENAME" }`
 
+### [terraform_validate](https://github.com/hashicorp/terraform)
+
+Terraform validate is is a subcommand of terraform to validate configuration files in a directory
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.terraform_validate }
+```
+
+#### Defaults
+
+- Filetypes: `{ "terraform" }`
+- Method: `diagnostics_on_save`
+- Command: `terraform`
+- Args: `{ "validate", "-json" }`
+
 ### [textlint](https://github.com/textlint/textlint)
 
 The pluggable linting tool for text and Markdown.
@@ -1963,7 +1997,7 @@ local sources = { null_ls.builtins.diagnostics.textlint }
 
 #### Defaults
 
-- Filetypes: `{}`
+- Filetypes: `{ "txt", "markdown" }`
 - Method: `diagnostics`
 - Command: `textlint`
 - Args: `{ "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" }`
@@ -2066,6 +2100,23 @@ local sources = { null_ls.builtins.diagnostics.twigcs }
 - Command: `twigcs`
 - Args: `{ "--reporter", "json", "$FILENAME" }`
 
+### [vacuum](https://quobix.com/vacuum)
+
+The world’s fastest and most scalable OpenAPI linter.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.vacuum }
+```
+
+#### Defaults
+
+- Filetypes: `{ "yaml", "json" }`
+- Method: `diagnostics`
+- Command: `vacuum`
+- Args: `{ "spectral-report", "--stdin", "--stdout" }`
+
 ### [vale](https://docs.errata.ai/vale/about)
 
 Syntax-aware linter for prose built with speed and extensibility in mind.
@@ -2086,6 +2137,23 @@ local sources = { null_ls.builtins.diagnostics.vale }
 #### Notes
 
 - vale does not include a syntax by itself, so you probably need to grab a `vale.ini` (at `~/.vale.ini`) and a StylesPath (somewhere, pointed from `vale.ini`) from [the list of configurations](https://docs.errata.ai/vale/about#open-source-configurations).
+
+### [verilator](https://www.veripool.org/verilator/)
+
+Verilog and SystemVerilog linter power by Verilator
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.verilator }
+```
+
+#### Defaults
+
+- Filetypes: `{ "verilog", "systemverilog" }`
+- Method: `diagnostics`
+- Command: `verilator`
+- Args: `{ "-lint-only", "-Wno-fatal", "$FILENAME" }`
 
 ### [vint](https://github.com/Vimjas/vint)
 
@@ -2405,6 +2473,23 @@ local sources = { null_ls.builtins.formatting.brittany }
 - Method: `formatting`
 - Command: `brittany`
 
+### [bsfmt](https://github.com/rokucommunity/brighterscript-formatter)
+
+A code formatter for BrightScript and BrighterScript.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.bsfmt }
+```
+
+#### Defaults
+
+- Filetypes: `{ "brs" }`
+- Method: `formatting`
+- Command: `bsfmt`
+- Args: `{ "$FILENAME" }`
+
 ### [buf](https://github.com/bufbuild/buf)
 
 A new way of working with Protocol Buffers.
@@ -2555,7 +2640,7 @@ local sources = { null_ls.builtins.formatting.crystal_format }
 - Filetypes: `{ "crystal" }`
 - Method: `formatting`
 - Command: `crystal`
-- Args: `{ "tool", "format" }`
+- Args: `{ "tool", "format", "-" }`
 
 ### [csharpier](https://csharpier.com/)
 
@@ -4345,7 +4430,7 @@ local sources = { null_ls.builtins.formatting.textlint }
 
 #### Defaults
 
-- Filetypes: `{}`
+- Filetypes: `{ "txt", "markdown" }`
 - Method: `formatting`
 - Command: `textlint`
 - Args: `{ "--fix", "$FILENAME" }`

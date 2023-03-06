@@ -148,6 +148,9 @@ return {
   mypy = {
     filetypes = { "python" }
   },
+  npm_groovy_lint = {
+    filetypes = { "groovy", "java", "Jenkinsfile" }
+  },
   opacheck = {
     filetypes = { "rego" }
   },
@@ -265,8 +268,11 @@ return {
   teal = {
     filetypes = { "teal" }
   },
+  terraform_validate = {
+    filetypes = { "terraform" }
+  },
   textlint = {
-    filetypes = {}
+    filetypes = { "txt", "markdown" }
   },
   tfsec = {
     filetypes = { "terraform" }
@@ -286,8 +292,14 @@ return {
   twigcs = {
     filetypes = { "twig" }
   },
+  vacuum = {
+    filetypes = { "yaml", "json" }
+  },
   vale = {
     filetypes = { "markdown", "tex", "asciidoc" }
+  },
+  verilator = {
+    filetypes = { "verilog", "systemverilog" }
   },
   vint = {
     filetypes = { "vim" }

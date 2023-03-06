@@ -2,6 +2,7 @@
 -- stylua: ignore
 return {
   Jenkinsfile = {
+    diagnostics = { "npm_groovy_lint" },
     formatting = { "npm_groovy_lint" }
   },
   arduino = {
@@ -24,6 +25,9 @@ return {
   },
   blade = {
     formatting = { "blade_formatter" }
+  },
+  brs = {
+    formatting = { "bsfmt" }
   },
   bzl = {
     diagnostics = { "buildifier" },
@@ -149,6 +153,7 @@ return {
     formatting = { "prettier", "prettier_d_slim", "prettier_eslint", "prettierd" }
   },
   groovy = {
+    diagnostics = { "npm_groovy_lint" },
     formatting = { "npm_groovy_lint" }
   },
   haml = {
@@ -172,7 +177,7 @@ return {
     formatting = { "djhtml", "djlint" }
   },
   java = {
-    diagnostics = { "checkstyle", "pmd", "semgrep" },
+    diagnostics = { "checkstyle", "npm_groovy_lint", "pmd", "semgrep" },
     formatting = { "astyle", "clang_format", "google_java_format", "npm_groovy_lint", "uncrustify" }
   },
   javascript = {
@@ -190,7 +195,7 @@ return {
     formatting = { "djhtml", "djlint" }
   },
   json = {
-    diagnostics = { "cfn_lint", "jsonlint", "spectral" },
+    diagnostics = { "cfn_lint", "jsonlint", "spectral", "vacuum" },
     formatting = { "deno_fmt", "dprint", "fixjson", "jq", "json_tool", "prettier", "prettier_d_slim", "prettier_eslint", "prettierd" }
   },
   jsonc = {
@@ -227,8 +232,8 @@ return {
   },
   markdown = {
     code_actions = { "ltrs", "proselint" },
-    diagnostics = { "alex", "ltrs", "ltrs", "markdownlint", "markdownlint_cli2", "mdl", "proselint", "vale", "write_good" },
-    formatting = { "cbfmt", "deno_fmt", "dprint", "markdown_toc", "markdownlint", "mdformat", "ocdc", "prettier", "prettier_d_slim", "prettier_eslint", "prettierd", "remark", "terrafmt" },
+    diagnostics = { "alex", "ltrs", "ltrs", "markdownlint", "markdownlint_cli2", "mdl", "proselint", "textlint", "vale", "write_good" },
+    formatting = { "cbfmt", "deno_fmt", "dprint", "markdown_toc", "markdownlint", "mdformat", "ocdc", "prettier", "prettier_d_slim", "prettier_eslint", "prettierd", "remark", "terrafmt", "textlint" },
     hover = { "dictionary" }
   },
   ["markdown.mdx"] = {
@@ -377,13 +382,14 @@ return {
     formatting = { "swiftformat", "swiftlint" }
   },
   systemverilog = {
+    diagnostics = { "verilator" },
     formatting = { "verible_verilog_format" }
   },
   teal = {
     diagnostics = { "teal" }
   },
   terraform = {
-    diagnostics = { "tfsec" },
+    diagnostics = { "terraform_validate", "tfsec" },
     formatting = { "terraform_fmt" }
   },
   ["terraform-vars"] = {
@@ -408,6 +414,10 @@ return {
   twig = {
     diagnostics = { "twigcs" }
   },
+  txt = {
+    diagnostics = { "textlint" },
+    formatting = { "textlint" }
+  },
   typescript = {
     code_actions = { "eslint", "eslint_d", "refactoring", "xo" },
     diagnostics = { "eslint", "eslint_d", "semgrep", "tsc", "xo" },
@@ -419,6 +429,7 @@ return {
     formatting = { "deno_fmt", "dprint", "eslint", "eslint_d", "prettier", "prettier_d_slim", "prettier_eslint", "prettierd", "rome", "rustywind", "standardts" }
   },
   verilog = {
+    diagnostics = { "verilator" },
     formatting = { "verible_verilog_format" }
   },
   vhdl = {
@@ -437,7 +448,7 @@ return {
     formatting = { "tidy", "xmlformat", "xmllint" }
   },
   yaml = {
-    diagnostics = { "actionlint", "cfn_lint", "spectral", "yamllint" },
+    diagnostics = { "actionlint", "cfn_lint", "spectral", "vacuum", "yamllint" },
     formatting = { "prettier", "prettier_d_slim", "prettier_eslint", "prettierd", "yamlfmt" }
   },
   ["yaml.ansible"] = {
