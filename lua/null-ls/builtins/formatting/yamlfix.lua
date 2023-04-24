@@ -4,17 +4,17 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
-    name = "djhtml",
+    name = "yamlfix",
     meta = {
-        url = "https://github.com/rtts/djhtml",
-        description = "A pure-Python Django/Jinja template indenter without dependencies.",
+        url = "https://github.com/lyz-code/yamlfix",
+        description = "A configurable YAML formatter that keeps comments.",
     },
     method = FORMATTING,
-    filetypes = { "django", "jinja.html", "htmldjango" },
+    filetypes = { "yaml" },
     generator_opts = {
-        command = "djhtml",
-        args = { "-" },
+        command = "yamlfix",
         to_stdin = true,
+        args = { "-" },
     },
     factory = h.formatter_factory,
 })

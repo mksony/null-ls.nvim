@@ -4,16 +4,16 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
-    name = "djhtml",
+    name = "swiftformat",
     meta = {
-        url = "https://github.com/rtts/djhtml",
-        description = "A pure-Python Django/Jinja template indenter without dependencies.",
+        url = "https://github.com/apple/swift-format",
+        description = "Swift formatter from apple. Requires building from source with `swift build`",
     },
     method = FORMATTING,
-    filetypes = { "django", "jinja.html", "htmldjango" },
+    filetypes = { "swift" },
     generator_opts = {
-        command = "djhtml",
-        args = { "-" },
+        command = "swift-format",
+        args = {},
         to_stdin = true,
     },
     factory = h.formatter_factory,

@@ -4,22 +4,19 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
-    name = "phpcsfixer",
+    name = "smlfmt",
     meta = {
-        url = "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",
-        description = "Formatter for php files.",
+        url = "https://github.com/shwestrick/smlfmt",
+        description = "A custom parser/auto-formatter for Standard ML",
     },
     method = FORMATTING,
-    filetypes = { "php" },
+    filetypes = { "sml" },
     generator_opts = {
-        command = "php-cs-fixer",
+        command = "smlfmt",
         args = {
-            "--no-interaction",
-            "--quiet",
-            "fix",
+            "--force",
             "$FILENAME",
         },
-        to_stdin = false,
         to_temp_file = true,
     },
     factory = h.formatter_factory,

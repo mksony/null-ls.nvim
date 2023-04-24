@@ -4,22 +4,24 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
-    name = "phpcsfixer",
+    name = "sqlfmt",
     meta = {
-        url = "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",
-        description = "Formatter for php files.",
+        url = "https://sqlfmt.com/",
+        description = "Formats your dbt SQL files so you don't have to",
+        notes = {
+            "Install sqlfmt with `pip install shandy-sqlfmt[jinjafmt]`",
+        },
     },
     method = FORMATTING,
-    filetypes = { "php" },
+    filetypes = {
+        "sql",
+        "jinja",
+    },
     generator_opts = {
-        command = "php-cs-fixer",
+        command = "sqlfmt",
         args = {
-            "--no-interaction",
-            "--quiet",
-            "fix",
             "$FILENAME",
         },
-        to_stdin = false,
         to_temp_file = true,
     },
     factory = h.formatter_factory,

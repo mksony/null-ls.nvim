@@ -53,7 +53,7 @@ return {
     filetypes = { "markdown", "org" }
   },
   clang_format = {
-    filetypes = { "c", "cpp", "cs", "java", "cuda" }
+    filetypes = { "c", "cpp", "cs", "java", "cuda", "proto" }
   },
   cljstyle = {
     filetypes = { "clojure" }
@@ -118,6 +118,9 @@ return {
   eslint_d = {
     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" }
   },
+  fantomas = {
+    filetypes = { "fsharp" }
+  },
   fish_indent = {
     filetypes = { "fish" }
   },
@@ -160,8 +163,14 @@ return {
   google_java_format = {
     filetypes = { "java" }
   },
+  haxe_formatter = {
+    filetypes = { "haxe" }
+  },
   hclfmt = {
     filetypes = { "hcl" }
+  },
+  htmlbeautifier = {
+    filetypes = { "eruby" }
   },
   isort = {
     filetypes = { "python" }
@@ -271,6 +280,9 @@ return {
   purs_tidy = {
     filetypes = { "purescript" }
   },
+  pyflyby = {
+    filetypes = { "python" }
+  },
   qmlformat = {
     filetypes = { "qml" }
   },
@@ -290,9 +302,12 @@ return {
     filetypes = { "rescript" }
   },
   rome = {
-    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" }
+    filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json" }
   },
   rubocop = {
+    filetypes = { "ruby" }
+  },
+  rubyfmt = {
     filetypes = { "ruby" }
   },
   ruff = {
@@ -319,11 +334,17 @@ return {
   shfmt = {
     filetypes = { "sh" }
   },
+  smlfmt = {
+    filetypes = { "sml" }
+  },
   sql_formatter = {
     filetypes = { "sql" }
   },
   sqlfluff = {
     filetypes = { "sql" }
+  },
+  sqlfmt = {
+    filetypes = { "sql", "jinja" }
   },
   sqlformat = {
     filetypes = { "sql" }
@@ -351,6 +372,9 @@ return {
   },
   surface = {
     filetypes = { "elixir", "surface" }
+  },
+  ["swift-format"] = {
+    filetypes = { "swift" }
   },
   swiftformat = {
     filetypes = { "swift" }
@@ -394,11 +418,20 @@ return {
   xmllint = {
     filetypes = { "xml" }
   },
+  xq = {
+    filetypes = { "xml" }
+  },
+  yamlfix = {
+    filetypes = { "yaml" }
+  },
   yamlfmt = {
     filetypes = { "yaml" }
   },
   yapf = {
     filetypes = { "python" }
+  },
+  yq = {
+    filetypes = { "yml", "yaml" }
   },
   zigfmt = {
     filetypes = { "zig" }

@@ -1,8 +1,14 @@
 local h = require("null-ls.helpers")
 local log = require("null-ls.logger")
 local methods = require("null-ls.methods")
+local u = require("null-ls.utils")
 
 local CODE_ACTION = methods.internal.CODE_ACTION
+
+local treesitter_get_node_text = vim.treesitter.get_node_text
+if not u.has_version("0.9.0") then
+    treesitter_get_node_text = vim.treesitter.query.get_node_text
+end
 
 return h.make_builtin({
     name = "gomodifytags",
@@ -14,7 +20,7 @@ return h.make_builtin({
     method = CODE_ACTION,
     filetypes = { "go" },
     can_run = function()
-        return require("null-ls.utils").is_executable("gomodifytags")
+        return u.is_executable("gomodifytags")
     end,
     generator_opts = {
         command = "gomodifytags",
@@ -109,13 +115,31 @@ return h.make_builtin({
                 -- End of Execution helpers
 
                 -- Main
-                local tsnode = vim.treesitter.get_node_at_pos(bufnr, row - 1, col - 1, {})
+                local tsnode
+                if u.has_version("0.9.0") then
+                    tsnode = vim.treesitter.get_node({ bufnr = bufnr, row = row - 1, col = col - 1 })
+                else
+                    tsnode = vim.treesitter.get_node_at_pos(bufnr, row - 1, col - 1, {})
+                end
                 local actions = {}
                 local struct_name
 
+                if tsnode == nil then
+                    return actions
+                end
+
                 -- Ops on struct
                 if (tsnode:type()) == "type_identifier" then
-                    struct_name = vim.treesitter.query.get_node_text(tsnode, 0)
+                    local tspnode = tsnode:parent()
+                    if tspnode == nil or tspnode:type() ~= "type_spec" then
+                        return
+                    end
+                    local typename_node = tspnode:field("type")[1]
+                    if typename_node == nil or typename_node:type() ~= "struct_type" then
+                        return
+                    end
+
+                    struct_name = treesitter_get_node_text(tsnode, 0)
                     if struct_name == nil then
                         return
                     end
@@ -132,11 +156,11 @@ return h.make_builtin({
 
                 -- Ops on struct field
                 if (tsnode:type()) == "field_identifier" then
-                    local field_name = vim.treesitter.query.get_node_text(tsnode, 0)
+                    local field_name = treesitter_get_node_text(tsnode, 0)
                     local tspnode = tsnode:parent():parent():parent()
                     if tspnode ~= nil and (tspnode:type()) == "struct_type" then
                         tspnode = tspnode:parent():child(0)
-                        struct_name = vim.treesitter.query.get_node_text(tspnode, 0)
+                        struct_name = treesitter_get_node_text(tspnode, 0)
                     end
 
                     if struct_name == nil or field_name == nil then

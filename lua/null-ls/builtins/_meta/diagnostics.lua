@@ -10,6 +10,9 @@ return {
   ansiblelint = {
     filetypes = { "yaml.ansible" }
   },
+  bslint = {
+    filetypes = { "brs" }
+  },
   buf = {
     filetypes = { "proto" }
   },
@@ -136,6 +139,9 @@ return {
   markdownlint_cli2 = {
     filetypes = { "markdown" }
   },
+  markuplint = {
+    filetypes = { "html" }
+  },
   mdl = {
     filetypes = { "markdown" }
   },
@@ -208,6 +214,9 @@ return {
   qmllint = {
     filetypes = { "qml" }
   },
+  reek = {
+    filetypes = { "ruby" }
+  },
   revive = {
     filetypes = { "go" }
   },
@@ -269,13 +278,13 @@ return {
     filetypes = { "teal" }
   },
   terraform_validate = {
-    filetypes = { "terraform" }
+    filetypes = { "terraform", "tf", "terraform-vars" }
   },
   textlint = {
     filetypes = { "txt", "markdown" }
   },
   tfsec = {
-    filetypes = { "terraform" }
+    filetypes = { "terraform", "tf", "terraform-vars" }
   },
   tidy = {
     filetypes = { "html", "xml" }
