@@ -29,6 +29,42 @@ local sources = { null_ls.builtins.diagnostics.cspell, null_ls.builtins.code_act
 - Filetypes: `{}`
 - Method: `code_action`
 
+#### Config
+
+##### `find_json` (function)
+
+Customizing the location of cspell config
+
+```lua
+local cspell = null_ls.builtins.code_actions.cspell.with({
+    config = {
+        find_json = function(cwd)
+            return vim.fn.expand(cwd .. "/cspell.json")
+        end
+    },
+})
+```
+##### `on_success` (function)
+
+Callback after successful execution of code action.
+
+```lua
+local cspell = null_ls.builtins.code_actions.cspell.with({
+    config = {
+        on_success = function(cspell_config_file, params)
+            -- format the cspell config file
+            os.execute(
+                string.format(
+                    "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                    cspell_config_file,
+                    cspell_config_file
+                )
+            )
+        end
+    },
+})
+```
+
 #### Notes
 
 - This source depends on the `cspell` built-in diagnostics source, so make sure to register it, too.
@@ -4681,6 +4717,30 @@ local sources = { null_ls.builtins.formatting.tidy }
 - Method: `formatting`
 - Command: `tidy`
 - Args: `{ "--tidy-mark", "no", "-quiet", "-indent", "-wrap", "-" }`
+
+### [treefmt](https://github.com/numtide/treefmt)
+
+One CLI to format your repo
+
+#### Usage
+
+```lua
+local sources = {
+    null_ls.builtins.formatting.treefmt.with({
+        -- treefmt requires a config file
+        condition = function(utils)
+            return utils.root_has_file("treefmt.toml")
+        end,
+    }),
+}
+```
+
+#### Defaults
+
+- Filetypes: `{}`
+- Method: `formatting`
+- Command: `treefmt`
+- Args: `{ "--allow-missing-formatter", "--stdin", "$FILENAME" }`
 
 ### trim_newlines
 
