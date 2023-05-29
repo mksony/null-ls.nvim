@@ -148,6 +148,9 @@ return {
   glsl = {
     diagnostics = { "glslc" }
   },
+  gn = {
+    formatting = { "gn_format" }
+  },
   go = {
     code_actions = { "gomodifytags", "impl", "refactoring" },
     diagnostics = { "golangci_lint", "gospel", "revive", "semgrep", "staticcheck" },
@@ -189,12 +192,12 @@ return {
   },
   javascript = {
     code_actions = { "eslint", "eslint_d", "refactoring", "xo" },
-    diagnostics = { "eslint", "eslint_d", "jshint", "semistandardjs", "standardjs", "xo" },
+    diagnostics = { "deno_lint", "eslint", "eslint_d", "jshint", "semistandardjs", "standardjs", "xo" },
     formatting = { "deno_fmt", "dprint", "eslint", "eslint_d", "prettier", "prettier_d_slim", "prettier_eslint", "prettier_standard", "prettierd", "rome", "rustywind", "semistandardjs", "standardjs" }
   },
   javascriptreact = {
     code_actions = { "eslint", "eslint_d", "xo" },
-    diagnostics = { "eslint", "eslint_d", "semistandardjs", "standardjs", "xo" },
+    diagnostics = { "deno_lint", "eslint", "eslint_d", "semistandardjs", "standardjs", "xo" },
     formatting = { "deno_fmt", "dprint", "eslint", "eslint_d", "prettier", "prettier_d_slim", "prettier_eslint", "prettier_standard", "prettierd", "rome", "rustywind", "semistandardjs", "standardjs" }
   },
   jinja = {
@@ -252,8 +255,14 @@ return {
   matlab = {
     diagnostics = { "mlint" }
   },
+  ncl = {
+    formatting = { "topiary" }
+  },
   nginx = {
     formatting = { "nginx_beautifier" }
+  },
+  nickel = {
+    formatting = { "topiary" }
   },
   nim = {
     formatting = { "nimpretty" }
@@ -310,7 +319,7 @@ return {
   python = {
     code_actions = { "refactoring" },
     diagnostics = { "flake8", "mypy", "pycodestyle", "pydocstyle", "pylama", "pylint", "pyproject_flake8", "ruff", "semgrep", "vulture" },
-    formatting = { "autoflake", "autopep8", "black", "blue", "isort", "pyflyby", "reorder_python_imports", "ruff", "usort", "yapf" }
+    formatting = { "autoflake", "autopep8", "black", "blue", "isort", "pyflyby", "pyink", "reorder_python_imports", "ruff", "usort", "yapf" }
   },
   qml = {
     diagnostics = { "qmllint" },
@@ -367,6 +376,9 @@ return {
     diagnostics = { "dotenv_linter", "shellcheck" },
     formatting = { "beautysh", "shellharden", "shfmt" },
     hover = { "printenv" }
+  },
+  sls = {
+    diagnostics = { "saltlint" }
   },
   sml = {
     formatting = { "smlfmt" }
@@ -435,12 +447,12 @@ return {
   },
   typescript = {
     code_actions = { "eslint", "eslint_d", "refactoring", "xo" },
-    diagnostics = { "eslint", "eslint_d", "semgrep", "tsc", "xo" },
+    diagnostics = { "deno_lint", "eslint", "eslint_d", "semgrep", "tsc", "xo" },
     formatting = { "deno_fmt", "dprint", "eslint", "eslint_d", "prettier", "prettier_d_slim", "prettier_eslint", "prettierd", "rome", "rustywind", "standardts" }
   },
   typescriptreact = {
     code_actions = { "eslint", "eslint_d", "xo" },
-    diagnostics = { "eslint", "eslint_d", "semgrep", "tsc", "xo" },
+    diagnostics = { "deno_lint", "eslint", "eslint_d", "semgrep", "tsc", "xo" },
     formatting = { "deno_fmt", "dprint", "eslint", "eslint_d", "prettier", "prettier_d_slim", "prettier_eslint", "prettierd", "rome", "rustywind", "standardts" }
   },
   verilog = {

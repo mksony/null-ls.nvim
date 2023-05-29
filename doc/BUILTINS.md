@@ -18,6 +18,10 @@ See [BUILTIN_CONFIG](BUILTIN_CONFIG.md) to learn how to set up and configure the
 
 Injects actions to fix typos found by `cspell`.
 
+**This source is not actively developed in this repository.**
+
+An up-to-date version exists as a companion plugin in [cspell.nvim](https://github.com/davidmh/cspell.nvim)
+
 #### Usage
 
 ```lua
@@ -769,6 +773,10 @@ local sources = { null_ls.builtins.diagnostics.credo }
 
 cspell is a spell checker for code.
 
+**This source is not actively developed in this repository.**
+
+An up-to-date version exists as a companion plugin in [cspell.nvim](https://github.com/davidmh/cspell.nvim)
+
 #### Usage
 
 ```lua
@@ -832,6 +840,23 @@ local sources = { null_ls.builtins.diagnostics.deadnix }
 - Method: `diagnostics`
 - Command: `deadnix`
 - Args: `{ "--output-format=json", "$FILENAME" }`
+
+### [deno_lint](https://github.com/denoland/deno_lint)
+
+Blazing fast linter for JavaScript and TypeScript written in Rust
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.deno_lint }
+```
+
+#### Defaults
+
+- Filetypes: `{ "javascript", "typescript", "typescriptreact", "javascriptreact" }`
+- Method: `diagnostics`
+- Command: `deno`
+- Args: `{ "lint", "--json", "$FILENAME" }`
 
 ### [djlint](https://github.com/Riverside-Healthcare/djLint)
 
@@ -1065,7 +1090,7 @@ local sources = { null_ls.builtins.diagnostics.golangci_lint }
 - Filetypes: `{ "go" }`
 - Method: `diagnostics_on_save`
 - Command: `golangci-lint`
-- Args: `{ "run", "--fix=false", "--out-format=json", "--path-prefix", "$ROOT" }`
+- Args: `{ "run", "--fix=false", "--out-format=json" }`
 
 ### [gospel](https://github.com/kortschak/gospel)
 
@@ -1821,6 +1846,23 @@ local sources = { null_ls.builtins.diagnostics.ruff }
 - Method: `diagnostics`
 - Command: `ruff`
 - Args: `{ "-n", "-e", "--stdin-filename", "$FILENAME", "-" }`
+
+### [saltlint](https://github.com/warpnet/salt-lint)
+
+A command-line utility that checks for best practices in SaltStack.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.diagnostics.saltlint }
+```
+
+#### Defaults
+
+- Filetypes: `{ "sls" }`
+- Method: `diagnostics_on_save`
+- Command: `salt-lint`
+- Args: `{ "--nocolor", "--json", "$FILENAME" }`
 
 ### [selene](https://kampfkarren.github.io/selene/)
 
@@ -3230,6 +3272,27 @@ local sources = { null_ls.builtins.formatting.gersemi }
 - Command: `gersemi`
 - Args: `{ "-" }`
 
+### [gn_format](http://gn.googlesource.com/gn)
+
+Format your GN code!
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.gn_format }
+```
+
+#### Defaults
+
+- Filetypes: `{ "gn" }`
+- Method: `formatting`
+- Command: `gn`
+- Args: `{ "format", "--stdin" }`
+
+#### Notes
+
+- Install google depot_tools to use gn
+
 ### [gofmt](https://pkg.go.dev/cmd/gofmt)
 
 Formats go programs.
@@ -3947,8 +4010,8 @@ local sources = { null_ls.builtins.formatting.prismaFmt }
 
 - Filetypes: `{ "prisma" }`
 - Method: `formatting`
-- Command: `prisma-fmt`
-- Args: `{ "format", "-i", "$FILENAME" }`
+- Command: `prisma`
+- Args: `{ "format", "$FILENAME" }`
 
 ### [protolint](https://github.com/yoheimuta/protolint)
 
@@ -4038,6 +4101,23 @@ local sources = { null_ls.builtins.formatting.pyflyby }
 - Method: `formatting`
 - Command: `tidy-imports`
 - Args: `{ "-n" }`
+
+### [pyink](https://github.com/google/pyink)
+
+The Google Python code formatter
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.pyink }
+```
+
+#### Defaults
+
+- Filetypes: `{ "python" }`
+- Method: `formatting`
+- Command: `pyink`
+- Args: `{ "--stdin-filename", "$FILENAME", "--quiet", "-" }`
 
 ### [qmlformat](https://doc-snapshots.qt.io/qt6-dev/qtquick-tools-and-utilities.html#qmlformat)
 
@@ -4407,7 +4487,7 @@ local sources = { null_ls.builtins.formatting.sqlfmt }
 - Filetypes: `{ "sql", "jinja" }`
 - Method: `formatting`
 - Command: `sqlfmt`
-- Args: `{ "$FILENAME" }`
+- Args: `{ "-" }`
 
 #### Notes
 
@@ -4717,6 +4797,23 @@ local sources = { null_ls.builtins.formatting.tidy }
 - Method: `formatting`
 - Command: `tidy`
 - Args: `{ "--tidy-mark", "no", "-quiet", "-indent", "-wrap", "-" }`
+
+### [topiary](https://github.com/tweag/topiary)
+
+A uniform formatter for simple languages
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.topiary }
+```
+
+#### Defaults
+
+- Filetypes: `{ "ncl", "nickel" }`
+- Method: `formatting`
+- Command: `topiary`
+- Args: `{ "-i", "-f", "$FILENAME" }`
 
 ### [treefmt](https://github.com/numtide/treefmt)
 
